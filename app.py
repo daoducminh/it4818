@@ -161,7 +161,10 @@ def main():
                             )
             if st.form_submit_button("Submit"):
                 input_df = pd.DataFrame(input_dict, index=[0])
+                st.write('Input data')
                 st.dataframe(input_df)
+                rs = app.predict(input_df, model)
+                st.write(f'Predicted Attrition: {convert_attrition(rs)[0]}')
     else:
         choices = st.radio(
             'ID selection method',
