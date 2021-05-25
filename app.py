@@ -147,8 +147,9 @@ def main():
                         series = app.df[col]
                         if series.dtype == object:
                             values = get_unique_value(series)
+                            rand_index = randint(0, len(values)-1)
                             input_dict[col] = st.selectbox(
-                                col, values, key=str(uuid4())
+                                col, values, key=str(uuid4()), index=rand_index
                             )
                         else:
                             min_v, max_v = get_min_max_value(series)
